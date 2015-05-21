@@ -20,4 +20,12 @@ class CurrencyTest < Minitest::Test
     assert_equal(currency2.amount, currency2.amount)
   end
 
+  def test_currency_doesnt_equal_diff
+    currency1 = Currency.new('EUR', 4.00)
+    currency2 = Currency.new('USD', 3.00)
+    refute_equal(currency1.code, currency2.code)
+    refute_equal(currency1.amount, currency2.amount)
+  end
+
+
 end
