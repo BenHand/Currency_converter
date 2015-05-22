@@ -3,16 +3,19 @@ require_relative '../lib/currency'
 
 class CurrencyTest < Minitest::Test
 
+#Testing that class Currency exists
   def test_currency_exists
     assert(Currency)
   end
 
+#Testing class currency takes input
   def test_currency_takes_input
     test = Currency.new('USD', 1.05)
     assert_equal('USD', test.code)
     assert_equal(1.05, test.amount)
   end
 
+#Testing two currencies with same arguments = eachother
   def test_currency_equals_same
     currency1 = Currency.new('EUR', 5.75)
     currency2 = Currency.new('EUR', 5.75)
@@ -20,6 +23,7 @@ class CurrencyTest < Minitest::Test
     assert_equal(currency2.amount, currency2.amount)
   end
 
+#Testing two currencies with diff arguments != eachother
   def test_currency_doesnt_equal_diff
     currency1 = Currency.new('EUR', 4.00)
     currency2 = Currency.new('USD', 3.00)
@@ -27,6 +31,7 @@ class CurrencyTest < Minitest::Test
     refute_equal(currency1.amount, currency2.amount)
   end
 
+#Testing custom "==" method returns true when appropriate
   def test_currency_equals_equals_true
     currency1 = Currency.new('USD', 5.00)
     currency2 = Currency.new('USD', 3.45)
@@ -34,6 +39,7 @@ class CurrencyTest < Minitest::Test
     assert_equal(true, test )
   end
 
+#Testing custom "==" method returns false when appropriate
   def test_currency_equals_equals_false
     currency1 = Currency.new('EUR', 5.00)
     currency2 = Currency.new('USD', 3.45)
@@ -41,6 +47,7 @@ class CurrencyTest < Minitest::Test
     assert_equal(false, test )
   end
 
+#Testing custom "+" method returns expected value
   def test_addition_method
     currency1 = Currency.new('USD', 5.00)
     currency2 = Currency.new('USD', 3.45)
@@ -48,8 +55,12 @@ class CurrencyTest < Minitest::Test
     assert_equal(8.45, test)
   end
 
-  # def test_subtraction_method
-
-  # end
+#Testing custom "-" method returns expected value
+  def test_subtraction_method
+    currency1 = Currency.new('USD', 8.00)
+    currency2 = Currency.new('USD', 4.45)
+    test = currency1 - currency2
+    assert_equal(3.55, test)
+  end
 
 end
