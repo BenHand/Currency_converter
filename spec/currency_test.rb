@@ -62,5 +62,19 @@ class CurrencyTest < Minitest::Test
     test = currency1 - currency2
     assert_equal(3.55, test)
   end
+#Testing "-" raises error when currency codes are not equal
+  def test_subtraction_error
+    currency1 = Currency.new('EUR', 8.00)
+    currency2 = Currency.new('USD', 4.45)
+    assert_raises(DifferentCurrencyCodeError){currency1 - currency2}
+  end
+
+#Testing "+" raises error when currency codes are not equal
+  def test_subtraction_error
+    currency1 = Currency.new('EUR', 8.00)
+    currency2 = Currency.new('USD', 4.45)
+    assert_raises(DifferentCurrencyCodeError){currency1 + currency2}
+  end
+
 
 end

@@ -21,11 +21,24 @@ class Currency
   def +(other)
 
     if other.is_a?(Currency) && other.code == @code
-      other.amount + @amount
+      @amount + other.amount
+    else
+      raise DifferentCurrencyCodeError
+    end
+
+  end
+
+  def -(other)
+
+    if other.is_a?(Currency) && other.code == @code
+      @amount - other.amount
+    else
+      raise DifferentCurrencyCodeError
     end
 
   end
 
 end
 
-
+class DifferentCurrencyCodeError < StandardError
+end
