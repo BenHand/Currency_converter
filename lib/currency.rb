@@ -4,7 +4,6 @@ class Currency
   def initialize(code, amount)
     @code = code
     @amount = amount
-    @currencies = {}
   end
 
 
@@ -40,16 +39,14 @@ class Currency
   end
 
   def *(number)
-    if number.is_a?(Fixnum)
-      @amount *= number
-      @currencies[@code] = @amount
-      @currencies
-    else number.is_a?(Float)
-      @amount *= number
-      @currencies[@code] = @amount.round(5)
-      @currencies
-    end
 
+    if number.is_a?(Fixnum)
+      new_amount = @amount * number
+      Currency.new(@code, new_amount)
+    else number.is_a?(Float)
+      new_amount = @amount * number
+      Currency.new(@code, new_amount)
+    end
 
   end
 

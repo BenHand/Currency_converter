@@ -76,18 +76,18 @@ class CurrencyTest < Minitest::Test
     assert_raises(DifferentCurrencyCodeError){currency1 + currency2}
   end
 
-#Testing custom multiplication method using Fixnum returns hash
-#with expected code and amount
-  def test_multiplier_fixnum
+#Testing custom multiplication method using Fixnum returns new
+#currency object with expected code and amount
+  def test_multiplier_fixnum_returns_new_object
     currency = Currency.new('USD', 1.00)
-    assert_equal({"USD"=>5.0}, (currency * 5))
+    assert_equal(Currency.new('USD', 5.0), (currency * 5))
   end
 
-#Testing custom multiplication method using Float returns hash
-#with expected code and amount.round(5)
-  def test_multiplier_float
+#Testing custom multiplication method using Float returns new
+#currency object with expected code and amount.round(5)
+  def test_multiplier_float_returns_new_object
     currency = Currency.new('USD', 1.11)
-    assert_equal({"USD"=>5.8275}, (currency * 5.25))
+    assert_equal(Currency.new('USD', 8275), (currency * 5.25))
   end
 
 end
