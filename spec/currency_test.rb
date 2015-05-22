@@ -30,22 +30,26 @@ class CurrencyTest < Minitest::Test
   def test_currency_equals_equals_true
     currency1 = Currency.new('USD', 5.00)
     currency2 = Currency.new('USD', 3.45)
-    test = currency1.==(currency2)
+    test = currency1 == currency2
     assert_equal(true, test )
   end
 
   def test_currency_equals_equals_false
     currency1 = Currency.new('EUR', 5.00)
     currency2 = Currency.new('USD', 3.45)
-    test = currency1.==(currency2)
+    test = currency1 == currency2
     assert_equal(false, test )
   end
 
   def test_addition_method
     currency1 = Currency.new('USD', 5.00)
     currency2 = Currency.new('USD', 3.45)
-    test = currency1.+(currency2)
+    test = currency1 + currency2
     assert_equal(8.45, test)
   end
+
+  # def test_subtraction_method
+
+  # end
 
 end
