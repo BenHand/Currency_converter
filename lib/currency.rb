@@ -6,14 +6,7 @@ class Currency
     @amount = amount
   end
 
-  # def +(other)
 
-  #   if Currency ==(other)
-  #     total_amount = other.amount.to_i += @amount.to_i
-  #     total_amount
-  #   end
-
-  end
 
   def ==(other)
 
@@ -21,6 +14,14 @@ class Currency
       return true
     else
       return false
+    end
+
+  end
+
+  def +(other)
+
+    if other.is_a?(Currency) && other.code == @code
+      other.amount + @amount
     end
 
   end

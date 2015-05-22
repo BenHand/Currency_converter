@@ -41,11 +41,11 @@ class CurrencyTest < Minitest::Test
     assert_equal(false, test )
   end
 
-  # def test_addition_method
-  #   currency1 = Currency.new('USD', 5.00)
-  #   currency2 = Currency.new('USD', 3.45)
-  #   test = currency1.+(currency2)
-  #   assert_equal(8.45, test)
-  # end
+  def test_addition_method
+    currency1 = Currency.new('USD', 5.00)
+    currency2 = Currency.new('USD', 3.45)
+    test = currency1.+(currency2)
+    assert_equal(8.45, test)
+  end
 
 end
