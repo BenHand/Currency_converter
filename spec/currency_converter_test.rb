@@ -13,10 +13,11 @@ class Currency_Converter_Test < Minitest::Test
    assert_equal({'USD' => 1.00, 'EUR' => 0.74}, Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74}).currency_list)
   end
 
-#Testing convert method takes currency and returns converted value as expected
+#Testing convert method takes currency and returns new currency object
+#with exchanged rate.
   def test_convert_method
    convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74}).convert( Currency.new('USD', 10), 'EUR' )
-   assert_equal(convert_test, Currency.new('EUR', 7.40).amount)
+   assert_equal(convert_test, Currency.new('EUR', 7.40))
   end
 
 

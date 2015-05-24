@@ -10,6 +10,7 @@ attr_accessor :currency_list
   def convert(known_currency, currency_code)
     requested_currency = @currency_list[currency_code]
     exchanged_amount = known_currency.amount * requested_currency
+    Currency.new(currency_code, exchanged_amount)
   end
 
 end
