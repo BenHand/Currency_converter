@@ -20,5 +20,15 @@ class Currency_Converter_Test < Minitest::Test
    assert_equal(convert_test, Currency.new('EUR', 7.40))
   end
 
+#Testing Currency_Converter takes hash input with three distinct currency
+#codes and amounts.
+  def test_converter_takes_3_currencies
+    assert_equal({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0},
+      Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).currency_list)
+  end
+
+
+
+
 
 end
