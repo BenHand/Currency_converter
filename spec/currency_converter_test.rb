@@ -27,8 +27,22 @@ class Currency_Converter_Test < Minitest::Test
       Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).currency_list)
   end
 
+#Testing Currency_Converter can perform exchange operation on any currency
+#it knows to any other currency code it knows  -----{
+  def test_converter_changes_EUR_JPY
+    convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).convert( Currency.new('EUR', 0.74), 'JPY' )
+    assert_equal(convert_test, Currency.new('JPY', 162.2))
+  end
 
+  def test_converter_changes_JPY_USD
+    convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).convert( Currency.new('JPY', 120.0), 'USD' )
+    assert_equal(convert_test, Currency.new('USD', 1.00))
+  end
+#                                             }-----
 
-
+#Testing unknown currency throws back expected error response
+  def test_converter_returns_error_for_unknown_currency
+    assert_raises(UnknownCurrencyCodeError){Currency_Converter.new({'USD' => 1.00, 'JPY' => 120.0}).convert( Currency.new('JPY', 120.0), 'ALL' )}
+  end
 
 end
