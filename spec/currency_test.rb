@@ -87,7 +87,7 @@ class CurrencyTest < Minitest::Test
 #currency object with expected code and amount.round(5)
   def test_multiplier_float_returns_new_object
     currency = Currency.new('USD', 1.11)
-    assert_equal(Currency.new('USD', 8275), (currency * 5.25))
+    assert_equal(Currency.new('USD', 5.8275), (currency * 5.25))
   end
 
 end

@@ -17,7 +17,7 @@ class Currency_Converter_Test < Minitest::Test
 #with exchanged rate.
   def test_convert_method
    convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74}).convert( Currency.new('USD', 10), 'EUR' )
-   assert_equal(convert_test, Currency.new('EUR', 7.40))
+   assert_equal(Currency.new('EUR', 7.40), convert_test)
   end
 
 #Testing Currency_Converter takes hash input with three distinct currency
@@ -31,12 +31,13 @@ class Currency_Converter_Test < Minitest::Test
 #it knows to any other currency code it knows  -----{
   def test_converter_changes_EUR_JPY
     convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).convert( Currency.new('EUR', 0.74), 'JPY' )
-    assert_equal(convert_test, Currency.new('JPY', 162.2))
+    assert_equal(Currency.new('JPY', 162.2), convert_test)
   end
 
   def test_converter_changes_JPY_USD
     convert_test = Currency_Converter.new({'USD' => 1.00, 'EUR' => 0.74, 'JPY' => 120.0}).convert( Currency.new('JPY', 120.0), 'USD' )
-    assert_equal(convert_test, Currency.new('USD', 1.00))
+    assert_equal(Currency.new('USD', 1.00), convert_test)
+
   end
 #                                             }-----
 
